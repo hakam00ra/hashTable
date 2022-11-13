@@ -22,7 +22,6 @@ int main(void)
     printf("%d nodes in this index\n", insert(entry2, htable));
     printf("%d nodes in this index\n", insert(entry3, htable));
 
-    
     for (int i = 0;i< retrieve(htable, entry, v);i++)
         printf("key %s holds %d\n", key, v[i]);
 
@@ -31,7 +30,6 @@ int main(void)
 
     for (int i = 0;i < retrieve(htable, entry3, v);i++)
         printf("key %s holds %d\n", key3, v[i]);
-    
 
     return 1;
 }

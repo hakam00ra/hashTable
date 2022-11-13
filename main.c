@@ -17,7 +17,6 @@ int main(void)
     ht_entry* entry2 = create_entry(key2, value2);
     ht_entry* entry3 = create_entry(key3, value3);
     ht* htable = ht_create();
-   
 
     printf("%d nodes in this index\n", insert(entry, htable));
     printf("%d nodes in this index\n", insert(entry2, htable));

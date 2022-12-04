@@ -3,7 +3,7 @@
 #define HASH_TABLE
 
 typedef struct {
-    const char* key;
+    char* key;
     int value;
 } ht_entry;
 
@@ -23,10 +23,12 @@ typedef struct {
 
 
 ht* ht_create(void);
-ht_entry* create_entry(char* key, int value);
+ht_entry* create_entry(const char* key, int value);
 int hash_key(const char* key);
+int getSize(ht* table);
 int insert(ht_entry* entry, ht* table);
-int* retrieve(ht* table, ht_entry* entry, int* values);
+int delete(ht* table, ht_entry* entry);
+int retrieve(ht* table, ht_entry* entry, int* values);
 struct linkedList* createList(void);
 int insertNode(int index, ht_entry* entry, ht* table);
 #endif

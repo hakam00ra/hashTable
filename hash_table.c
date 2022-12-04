@@ -15,7 +15,7 @@ ht* ht_create(void)
     return table;
 }
 
-ht_entry* create_entry(char* key, int value)
+ht_entry* create_entry(const char* key, int value)
 {
     ht_entry* entry = malloc(sizeof(ht_entry));
     entry->key = malloc(sizeof(key) + 1);
@@ -31,7 +31,7 @@ int hash_key(const char* key)
     for (const char* p = key; *p; p++)
         hash += *p;
     //printf("index %d\n", hash % 400);
-    return hash%400;
+    return hash % 400;
 }
 
 int insert(ht_entry* entry, ht* table)
@@ -41,13 +41,13 @@ int insert(ht_entry* entry, ht* table)
     return insertNode(index, entry, table);
 }
 
-int* retrieve(ht* table, ht_entry* entry, int* reValues)
+int retrieve(ht* table, ht_entry* entry, int* reValues)
 {
     int index = hash_key(entry->key);
     struct linkedList* temp = table->nodes[index];
     int nodes = 0;
 
-    while (temp) {        
+    while (temp) {
         reValues[nodes++] = temp->entry->value;
         temp = temp->next;
     }
@@ -59,18 +59,33 @@ int getSize(ht* table)
     return table->length;
 }
 
-int delete(ht* table, ht_entry* entry, int node)
+int delete(ht* table, ht_entry* entry)
 {
     int index = hash_key(entry->key);
+    struct linkedList* temp = (table->nodes[index]); // head 
+    struct linkedList* temp2;
+    int node = 0;
 
-    if (table->nodes[index]==NULL)
+    if (table->nodes[index] == NULL)
         return 0;
     else
         --(table->length);
 
-    // TODO, delete node
-
-
+    while (temp) {
+        node++;   
+        if ((temp->entry->value == entry->value) && node==1) {
+            table->nodes[index] = table->nodes[index]->next;     
+            free(temp);
+            break;
+        }
+        if (temp->entry->value == entry->value) {          
+            temp2->next = temp->next;           
+            free(temp);
+            break;
+        }
+        temp2 = temp;
+        temp = temp->next;        
+    }
     return 1;
 }
 
@@ -88,12 +103,12 @@ struct linkedList* createList(void)
 int insertNode(int index, ht_entry* entry, ht* table)
 {
     if (table->nodes[index]->entry == NULL)
-        table->nodes[index]->entry = entry;    
+        table->nodes[index]->entry = entry;
     else {
         struct linkedList* head = createList();
         table->nodes[index]->next = head;
-        head->entry = entry;
+        head->entry = entry;       
         head->next = NULL;
-    }    
+    }
     return ++(table->nodes[index]->size);
 }

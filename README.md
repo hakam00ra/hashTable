@@ -27,3 +27,5 @@ retrieve(htable, entry, v);
 ### Delete entry
 delete(htable, entry);
 
+Run the test example in the main file to try it out.
+

@@ -10,8 +10,11 @@ ht* ht_create(void)
     table->length = 0;
     table->capacity = 400;
     table->nodes = calloc(table->capacity, sizeof(struct linkedList*));
-    for (int i = 0;i < table->capacity;i++)
+    table->size = calloc(table->capacity, sizeof(struct linkedList*));
+    for (int i = 0;i < table->capacity;i++) {
         table->nodes[i] = createList();
+        table->size[i] = 0;
+    }
     return table;
 }
 
@@ -63,19 +66,22 @@ int delete(ht* table, ht_entry* entry)
 {
     int index = hash_key(entry->key);
     struct linkedList* temp = (table->nodes[index]); // head 
-    struct linkedList* temp2;
+    struct linkedList* temp2 = temp;
     int node = 0;
 
     if (table->nodes[index] == NULL)
         return 0;
-    else
+    else {
         --(table->length);
+        --(table->size[index]);
+    }
 
     while (temp) {
         node++;   
         if ((temp->entry->value == entry->value) && node==1) {
-            table->nodes[index] = table->nodes[index]->next;     
-            free(temp);
+            temp2 = table->nodes[index];                
+            table->nodes[index] = table->nodes[index]->next;
+            free(temp2);
             break;
         }
         if (temp->entry->value == entry->value) {          
@@ -110,5 +116,5 @@ int insertNode(int index, ht_entry* entry, ht* table)
         head->entry = entry;       
         head->next = NULL;
     }
-    return ++(table->nodes[index]->size);
+    return ++(table->size[index]);
 }

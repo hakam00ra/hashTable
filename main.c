@@ -33,8 +33,9 @@ int main(void)
 
 
     delete(htable, entry);
-    
-
+    //delete(htable, entry2);
+    //printf("%d nodes in this index\n", insert(entry2, htable));
+   
     for (int i = 0;i < retrieve(htable, entry, v);i++)
         printf("key %s holds %d\n", key, v[i]);
     for (int i = 0;i < retrieve(htable, entry2, v);i++)

@@ -15,6 +15,7 @@ struct linkedList {
 
 typedef struct {
     struct linkedList** nodes;
+    int *size;
     int capacity;
     int length;
 } ht;

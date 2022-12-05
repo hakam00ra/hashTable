@@ -13,23 +13,23 @@ The user can retrieve or delete any node on any index.
 ## Example
 
 ### Create new hash table
-'''
+
 ht* htable = ht_create();
-'''
+
 ### Create entry
-'''
+
 ht_entry* entry = create_entry(key, value);
-'''
+
 ### Insert entry
-'''
+
 insert(entry, htable);
-'''
+
 ### Retrieve entry
-'''
+
 retrieve(htable, entry, v);
-'''
+
 ### Delete entry
-'''
+'''c
 delete(htable, entry);
 '''
 Run the test example in the main file to try it out.

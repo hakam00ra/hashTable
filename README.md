@@ -10,9 +10,5 @@ This is achieved by using a linked list inside the hash table structure and simp
 
 The user can retrieve or delete any node on any index.
 
-
-
-## TODO
-
-delete nodes
+## API
 

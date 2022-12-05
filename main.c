@@ -42,8 +42,5 @@ int main(void)
     for (int i = 0;i < retrieve(htable, entry3, v);i++)
         printf("key %s holds %d\n", key3, v[i]);
 
-  
-
-    printf("aaa");
     return 1;
 }

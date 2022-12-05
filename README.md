@@ -20,6 +20,10 @@ ht* htable = ht_create();
 
 ht_entry* entry = create_entry(key, value);
 
+### Insert entry
+
+insert(entry, htable);
+
 ### Retrieve entry
 
 retrieve(htable, entry, v);

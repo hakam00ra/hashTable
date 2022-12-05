@@ -29,7 +29,7 @@ insert(entry, htable);
 retrieve(htable, entry, v);
 
 ### Delete entry
-'''c
+'''ruby
 delete(htable, entry);
 '''
 Run the test example in the main file to try it out.

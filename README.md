@@ -28,6 +28,7 @@ insert(entry, htable);
 '''c
 retrieve(htable, entry, v);
 '''
+
 ### Delete entry
 '''c
 delete(htable, entry);

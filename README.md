@@ -3,7 +3,7 @@
 
 ## Description
 
-Hash table implementation with seperate chaining collision handling.
+Hash table implementation with separate chaining collision handling.
 This means that when a new key maps to an already used index of the table, the new value is also stored in that index.
 
 This is achieved by using a linked list inside the hash table structure and simply adding nodes to each index whenever a collision occurs.

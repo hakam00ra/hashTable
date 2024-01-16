@@ -21,7 +21,7 @@ ht* ht_create(void)
 ht_entry* create_entry(const char* key, int value)
 {
     ht_entry* entry = malloc(sizeof(ht_entry));
-    entry->key = malloc(sizeof(key) + 1);
+    entry->key = malloc(strlen(key) + 1);
     entry->value = value;
 
     strcpy(entry->key, key);
